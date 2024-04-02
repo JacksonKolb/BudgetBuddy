@@ -1,20 +1,21 @@
-# Stage 1: Build the React application
 FROM node:16-alpine as build-stage
+
+# Accept build-time variables
+ARG REACT_APP_BACKEND_URL
+
+# Set the environment variable so it's available during the build
+ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
 
 WORKDIR /app
 
-# Copy package.json and package-lock.json/yarn.lock files
 COPY package*.json yarn.lock* ./
 
-# Install dependencies
 RUN npm install
 
-# Copy the rest of your app's source code
 COPY ./ ./
 
-# Build your React app (including TypeScript compilation)
+# The environment variable is now accessible for the React build script
 RUN npm run build
-
 # Stage 2: Serve the React application from Nginx
 FROM nginx:stable-alpine as production-stage
 
