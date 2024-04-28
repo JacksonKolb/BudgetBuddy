@@ -1,29 +1,20 @@
-FROM node:16-alpine as build-stage
+# Use an official Node runtime as a parent image
+FROM node:16-alpine
 
-# Accept build-time variables
-ARG REACT_APP_BACKEND_URL
-
-# Set the environment variable so it's available during the build
-ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
-
+# Set the working directory in the container
 WORKDIR /app
 
+# Copy package.json and package-lock.json (or yarn.lock)
 COPY package*.json yarn.lock* ./
 
+# Install any needed packages
 RUN npm install
 
-COPY ./ ./
+# Copy the rest of the application's code
+COPY . .
 
-# The environment variable is now accessible for the React build script
-RUN npm run build
-# Stage 2: Serve the React application from Nginx
-FROM nginx:stable-alpine as production-stage
+# Make port 3000 available to the world outside this container
+EXPOSE 3000
 
-# Copy the build artifacts from the build stage to the nginx server
-COPY --from=build-stage /app/build /usr/share/nginx/html
-
-# Expose port 80 to the outside once the container has launched
-EXPOSE 80
-
-# Command to run nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Run the app when the container launches
+CMD ["npm", "start"]

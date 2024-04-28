@@ -1,26 +1,43 @@
 {
-    "name": "budgetbuddy-frontend",
-    "version": "1.0.0",
-    "description": "A budget tracking application frontend",
-    "main": "index.js",
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build"
-    },
-    "keywords": [
-        "react",
-        "budget",
-        "frontend"
+  "name": "budgetbuddy-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A budget tracking application frontend",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "keywords": [
+    "react",
+    "budget",
+    "frontend"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.7.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "author": "Your Name",
-    "license": "MIT",
-    "dependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-scripts": "5.0.0"
-    },
-    "devDependencies": {
-        "@types/react": "^18.2.73",
-        "@types/react-dom": "^18.2.23"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
