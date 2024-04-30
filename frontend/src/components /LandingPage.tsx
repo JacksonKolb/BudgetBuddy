@@ -1,4 +1,5 @@
 import React from 'react';
+import TransactionForm from './TransactionForm';
 
 //TODO - Possibly move this to a models class or something? I don't front end that well yet.
 type Transaction = {
@@ -28,7 +29,7 @@ function LandingPage() {
                 <button onClick={handleLogout}>Logout</button>
             </header>
             <section>
-                <h2>Logged in as: FakeUser</h2>
+                <h2>Logged in as: Jack</h2>
             </section>
             <section>
                 <h2>Transactions</h2>
@@ -40,6 +41,7 @@ function LandingPage() {
                     ))}
                 </ul>
             </section>
+            <TransactionForm/>
         </div>
     );
 };
